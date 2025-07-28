@@ -153,6 +153,7 @@ export const useProductsStore = defineStore('products', {
         }))
       }
     },
+
     async getOrderDetails() {
       const response = await fetch(`http://localhost:8000/api/orden/${this.orden.id}/items`, {
         method: 'GET',
@@ -267,7 +268,7 @@ export const useProductsStore = defineStore('products', {
       try {
         // Descomentar si quieres enviar la orden al backend
         const response = await fetch(`http://localhost:8000/api/orden/${this.orden.id}/checkout`, {
-          method: 'GET',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
