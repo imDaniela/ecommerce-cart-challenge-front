@@ -1,6 +1,8 @@
 // stores/products.js
 import { defineStore } from 'pinia'
 
+const base_url = import.meta.env.VITE_API_BASE_URL
+
 export const useProductsStore = defineStore('products', {
   state: () => ({
     products: [],
@@ -36,7 +38,7 @@ export const useProductsStore = defineStore('products', {
       this.error = null
 
       try {
-        const response = await fetch('http://localhost:8000/api/products', {
+        const response = await fetch(`${base_url}/api/products`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -70,7 +72,7 @@ export const useProductsStore = defineStore('products', {
       this.error = null
 
       try {
-        const response = await fetch('http://localhost:8000/api/orden', {
+        const response = await fetch(`${base_url}/api/orden`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -100,7 +102,7 @@ export const useProductsStore = defineStore('products', {
       this.error = null
 
       try {
-        const response = await fetch(`http://localhost:8000/api/orden/${this.orden.id}`, {
+        const response = await fetch(`${base_url}/api/orden/${this.orden.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -155,7 +157,7 @@ export const useProductsStore = defineStore('products', {
     },
 
     async getOrderDetails() {
-      const response = await fetch(`http://localhost:8000/api/orden/${this.orden.id}/items`, {
+      const response = await fetch(`${base_url}/api/orden/${this.orden.id}/items`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -179,7 +181,7 @@ export const useProductsStore = defineStore('products', {
 
     async createOrderItem(ordenItem, endpoint, method) {
       try {
-        const response = await fetch(`http://localhost:8000/api/${endpoint}`, {
+        const response = await fetch(`${base_url}/api/${endpoint}`, {
           method: method,
           headers: {
             'Content-Type': 'application/json',
@@ -221,7 +223,7 @@ export const useProductsStore = defineStore('products', {
 
     async removeOrderItem(ordenItemId) {
       try {
-        const response = await fetch(`http://localhost:8000/api/orden/item/${ordenItemId}`, {
+        const response = await fetch(`${base_url}/api/orden/item/${ordenItemId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -267,7 +269,7 @@ export const useProductsStore = defineStore('products', {
 
       try {
         // Descomentar si quieres enviar la orden al backend
-        const response = await fetch(`http://localhost:8000/api/orden/${this.orden.id}/checkout`, {
+        const response = await fetch(`${base_url}/api/orden/${this.orden.id}/checkout`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
