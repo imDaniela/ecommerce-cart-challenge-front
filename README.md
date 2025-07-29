@@ -1,35 +1,43 @@
-# ecommerce-cart-challenge-front
+# Ecommerce Cart Challenge Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+## Descripción del proyecto
 
-## Recommended IDE Setup
+Este frontend fue construido con Vue 3 + Vite, y sirve como interfaz de usuario para consumir la API del carrito de compras desarrollada en Symfony. A través de esta interfaz, es posible visualizar productos, crear órdenes, agregar productos a una orden, actualizar cantidades, eliminar productos y finalizar el proceso marcando la orden como pagada.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+**NOTA:** La interfaz es una vista simple que simula una redirección desde otra pantalla. Al montarse automáticamente, se crea una nueva orden en el backend para comenzar la experiencia de compra.
 
-## Customize configuration
+## Estructura del proyecto
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+La estructura del frontend sigue una organización sencilla basada en componentes, con enfoque en el consumo de la API del backend. A continuación, se destacan los elementos principales:
 
-## Project Setup
+- Vista principal: Main.vue
 
-```sh
-npm install
-```
+  - Contiene el diseño de la interfaz del carrito y la lógica de interacción con el usuario.
 
-### Compile and Hot-Reload for Development
+- Store: product.js
+  - Implementa la lógica de gestión del estado usando Pinia, encargándose de realizar las peticiones HTTP a los endpoints del backend (productos, orden, items, checkout, etc.).
 
-```sh
-npm run dev
-```
+## Tecnología utilizada
 
-### Compile and Minify for Production
+- **Lenguaje:** JavaScript
+- **Framework:** Vue 3
+- **Compilador:** Vite
+- **Routing:** Vue Router
+- **Estado global:** Pinia
+- **Consumo de API:** Fetch
 
-```sh
-npm run build
-```
+## Requisitos previos
 
-### Lint with [ESLint](https://eslint.org/)
+- Node.js >= 18
+- npm >= 9 (Recomendado usar nvm para gestionar versiones de Node.js)
 
-```sh
-npm run lint
-```
+## Instrucciones para levantar el entorno con Docker
+
+Asegúrate de tener instalado Docker y Docker Compose.
+Clona el repositorio. Se incluye el archivo .env que apunta a la url del backend.
+Seguidamente puede ejecutar los siguientes comandos:
+
+- Build: docker compose build
+- Levantar normalmente: docker compose up
+
+La aplicación estará disponible por defecto en http://localhost:5173.
